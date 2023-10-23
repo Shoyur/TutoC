@@ -4,9 +4,19 @@
 int main() {
 
 
-    pid_t c = fork();
+    // pid_t c = fork();
 
-    printf("Hello World!");
+    // printf("Hello World!");
+
+
+
+    if (printf("test"))
+    
+
+
+
+
+
 
     return 0;
 

@@ -4,6 +4,11 @@
 
 int main() {
 
+    // si on veut, on peut initialiser avec des sauts
+    // (designated initializations)
+    int array0[10] = { [3] = 10, [6] = 20 };
+    // 0, 0, 0, 10, 0, 0, 20, 0, 0, 0
+
 
     /////////////////////////////////////////////////
     // loop un array

@@ -23,6 +23,9 @@ static void globFun() {  }
 
 int main() {
 
+    // type variable veut dire déclarer
+    // = 1 veut dire initialiser
+    int abc = 1;
 
     /////////////////////////////////////////////////
     // variables et types

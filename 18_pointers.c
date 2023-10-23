@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void swap1(int x, int y);
 void swap2(int * x, int * y);
@@ -153,6 +154,69 @@ int main() {
 
 
 
+
+
+    // NULL pointer
+    // sans adresse pour l'instant
+
+    int *ptr0 = NULL;
+    // si on met pas = NULL, ça ne prend pas de mémoire
+    // donc on aura un segmentation fault
+
+    // utile pour gérer erreur avec malloc
+    // ex:
+    int *ptr1 = (int*)malloc(2 * sizeof(int));
+    if (ptr1 != NULL) {
+        printf("OK!\n");
+        // ici on peut donner une valeur au pointeur
+        // sécuritairement car on sait que le malloc
+        // a réussi
+    }
+    else {
+        printf("NO GOOD!\n");
+    }
+
+    // ensuite si on call free(ptr1), 
+    free(ptr1);
+    // on libère la mémoire de 16 bytes
+
+    // et en plus en le rendant NULL, il ne pointe plus nul part
+    ptr1 = NULL;
+    // si on ne fait pas ça, ptr1 devient un "dangling pointer"
+    // parce que ça contiendrait toujours une adresse
+    // de mémoire qui n'appartient plus à notre programme
+    // et ce serait mausivais de l'accéder
+
+    // une application avec des pointeurs, 
+    // contenant au moins un pointeur NULL
+    // une linked list (nodes avec chains)
+
+    // n1 -> n2 -> n3
+
+    // n1 pointe vers n2, n2 vers n3, et n3 vers NULL
+    // ex:
+    struct node {
+        int value;
+        struct node *next;
+    };
+
+    struct node n1, n2, n3;
+
+    n1.value = 5;
+    n1.next = &n2;
+
+    n2.value = 10;
+    n2.next = &n3;
+
+    n3.value = 15;
+    n3.next = NULL;
+
+    struct node *chaine = &n1;
+
+    while (chaine != NULL) {
+        printf("%d\n", chaine->value);
+        chaine = chaine->next;
+    }
 
 
 
